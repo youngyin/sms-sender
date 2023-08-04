@@ -7,10 +7,7 @@ import com.yin.sms.contact.service.ContractService
 import lombok.AllArgsConstructor
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.ResponseEntity
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/contract")
@@ -25,9 +22,9 @@ class ContractController {
         return ResponseEntity.ok(ApiResponse(contractService.save(contractRequest)))
     }
 
-    @PostMapping("/selectAll")
-    fun searchAll():ResponseEntity<ApiResponse<List<ContractResponse>>> {
-        return ResponseEntity.ok(ApiResponse(contractService.searchAll()))
+    @PostMapping("/findAll")
+    fun findAll():ResponseEntity<ApiResponse<List<ContractResponse>>> {
+        return ResponseEntity.ok(ApiResponse(contractService.findAll()))
     }
 
 }

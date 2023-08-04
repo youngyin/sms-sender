@@ -19,11 +19,4 @@ data class ContractVo(
         var updtDt : LocalDateTime? = LocalDateTime.now(),
         @Column
         var regDt : LocalDateTime? = LocalDateTime.now()
-) {
-
-    constructor(contractSaveDto: ContractRequest) : this() {
-        phone = contractSaveDto.phone
-        name = contractSaveDto.name
-        id = contractSaveDto.id
-    }
-}
+)

@@ -5,5 +5,6 @@ import com.yin.sms.contact.dto.ContractResponse
 
 interface ContractService {
     fun save(saveDto: ContractRequest) : ContractRequest
-    fun searchAll() : List<ContractResponse>
+
+    fun findAll() : List<ContractResponse>
 }

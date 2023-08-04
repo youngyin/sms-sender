@@ -7,6 +7,7 @@ import com.yin.sms.contact.repository.ContractRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import java.util.*
+import kotlin.collections.List
 
 @Service
 class ContractServiceImpl: ContractService {
@@ -14,13 +15,15 @@ class ContractServiceImpl: ContractService {
     private lateinit var contractRepository : ContractRepository
 
     override fun save(saveDto: ContractRequest) : ContractRequest {
-        saveDto.id = UUID.randomUUID()
-        contractRepository.save(ContractVo(saveDto))
+        contractRepository.save(
+            ContractVo( id = UUID.randomUUID(), phone = saveDto.phone, name = saveDto.name)
+        )
         return saveDto
     }
 
-    override fun searchAll() : List<ContractResponse> {
-        return contractRepository.findAll()
-                .map { vo -> ContractResponse(vo) }
+    override fun findAll(): List<ContractResponse> {
+        return contractRepository.findAll().map { vo ->
+            ContractResponse(phone = vo.phone, name = vo.name)
+        }
     }
 }

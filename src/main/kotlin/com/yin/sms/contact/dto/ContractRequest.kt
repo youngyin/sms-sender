@@ -1,6 +1,5 @@
 package com.yin.sms.contact.dto
 
-import com.yin.sms.contact.model.ContractVo
 import org.intellij.lang.annotations.Pattern
 import java.util.UUID
 
@@ -10,9 +9,4 @@ data class ContractRequest(
         var name : String? = null,
         var id : UUID? = null
 ){
-
-        constructor(contractVo: ContractVo) : this() {
-                phone = contractVo.phone
-                name = contractVo.name
-        }
 }
