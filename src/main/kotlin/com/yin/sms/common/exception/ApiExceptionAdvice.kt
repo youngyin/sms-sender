@@ -17,7 +17,15 @@ class ApiExceptionAdvice {
                         statusCode = ApiStatus.E9000.code,
                         statusMsg = "${ApiStatus.E9000.msg}(${errMsg})",
                         data = null
-            )
-        )
+        ))
+    }
+
+    @ExceptionHandler(Exception::class)
+    fun defaultException(e : Exception) : ResponseEntity<ApiResponse<*>> {
+        return ResponseEntity.status(500).body(ApiResponse(
+                statusCode = ApiStatus.E9999.code,
+                statusMsg = "${ApiStatus.E9999.msg}(${e.cause?.message})",
+                data = null
+        ))
     }
 }
